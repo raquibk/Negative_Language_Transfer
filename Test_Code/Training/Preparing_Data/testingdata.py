@@ -25,29 +25,29 @@ for i in range(1):
     incorrect_ud_tags_unigram_list = []
     incorrect_ud_tags_bigram_list = []
     incorrect_ud_tags_padded_list = []
+    incorrect_ud_tags_list = []
     doc = nlp(df['incorrect_sentence'][i])
     space_segmented = df['incorrect_sentence'][i].split(' ')
     sep_index = space_segmented.index('|')
     tags = [tag.pos_ for tag in doc]
-    print(sep_index)
-    print(tags[sep_index+2+int(df['error_length'][i])])
     incorrect_ud_tags_list = tags[sep_index+1:(sep_index+1+int(df['error_length'][i]))]
+    incorrect_ud_tags.append(' '.join(incorrect_ud_tags_list))
 
-    incorrect_ud_tags_padded_list = incorrect_ud_tags_list
+    incorrect_ud_tags_padded_list = incorrect_ud_tags_list.copy()
+    incorrect_ud_tags_unigram_list = incorrect_ud_tags_list.copy()
+    incorrect_ud_tags_bigram_list = incorrect_ud_tags_list.copy()
+    
     incorrect_ud_tags_padded_list.insert(0, tags[sep_index-1])
     incorrect_ud_tags_padded_list.append(tags[sep_index+2+int(df['error_length'][i])])
+    incorrect_ud_tags_padded.append(' '.join(incorrect_ud_tags_padded_list))
 
-    incorrect_ud_tags_unigram_list = incorrect_ud_tags_list
-    incorrect_ud_tags_bigram_list = incorrect_ud_tags_list
     incorrect_ud_tags_unigram_list.append(tags[sep_index+2+int(df['error_length'][i])])
+    incorrect_ud_tags_unigram.append(' '.join(incorrect_ud_tags_unigram_list))
+
     incorrect_ud_tags_bigram_list.append(tags[sep_index+2+int(df['error_length'][i])])
     incorrect_ud_tags_bigram_list.append(tags[sep_index+3+int(df['error_length'][i])])
-
-    incorrect_ud_tags_unigram.append(' '.join(incorrect_ud_tags_unigram_list))
     incorrect_ud_tags_bigram.append(' '.join(incorrect_ud_tags_bigram_list))
-    incorrect_ud_tags_padded.append(' '.join(incorrect_ud_tags_padded_list))
-    incorrect_ud_tags.append(' '.join(incorrect_ud_tags_list))
-    
+
     print(incorrect_ud_tags)
     print(incorrect_ud_tags_padded)
     print(incorrect_ud_tags_unigram)

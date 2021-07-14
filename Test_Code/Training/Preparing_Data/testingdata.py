@@ -38,23 +38,36 @@ for i in range(3000):
         incorrect_ud_tags_unigram_list = incorrect_ud_tags_list.copy()
         incorrect_ud_tags_bigram_list = incorrect_ud_tags_list.copy()
         
-        incorrect_ud_tags_padded_list.insert(0, tags[sep_index-1])
-        incorrect_ud_tags_padded_list.append(tags[sep_index+1+int(df['error_length'][i])])
+        try:
+            incorrect_ud_tags_padded_list.insert(0, tags[sep_index-1])
+        except IndexError:
+            pass
+        try:
+            incorrect_ud_tags_padded_list.append(tags[sep_index+1+int(df['error_length'][i])])
+        except IndexError:
+            pass
         incorrect_ud_tags_padded.append(' '.join(incorrect_ud_tags_padded_list))
 
-        incorrect_ud_tags_unigram_list.append(tags[sep_index+1+int(df['error_length'][i])])
+        try:
+            incorrect_ud_tags_unigram_list.append(tags[sep_index+1+int(df['error_length'][i])])
+        except IndexError:
+            pass
         incorrect_ud_tags_unigram.append(' '.join(incorrect_ud_tags_unigram_list))
 
-        incorrect_ud_tags_bigram_list.append(tags[sep_index+1+int(df['error_length'][i])])
-        incorrect_ud_tags_bigram_list.append(tags[sep_index+2+int(df['error_length'][i])])
+        try:
+            incorrect_ud_tags_bigram_list.append(tags[sep_index+1+int(df['error_length'][i])])
+        except IndexError:
+            pass
+        try:
+            incorrect_ud_tags_bigram_list.append(tags[sep_index+2+int(df['error_length'][i])])
+        except IndexError:
+            pass
         incorrect_ud_tags_bigram.append(' '.join(incorrect_ud_tags_bigram_list))
 
-    except IndexError:
-        count+=1
     except KeyError:
         continue
 
-print(df['error_length'][2999])
+
 print('--------------------')
 print(incorrect_ud_tags[-1])
 print('--------------------')

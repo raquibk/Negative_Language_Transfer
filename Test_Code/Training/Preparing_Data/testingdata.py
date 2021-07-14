@@ -21,7 +21,7 @@ incorrect_ud_tags_unigram = []
 incorrect_ud_tags_bigram = []
 incorrect_sentence = []
 
-for i in range(1):
+for i in range(5):
     incorrect_ud_tags_unigram_list = []
     incorrect_ud_tags_bigram_list = []
     incorrect_ud_tags_padded_list = []
@@ -38,16 +38,18 @@ for i in range(1):
     incorrect_ud_tags_bigram_list = incorrect_ud_tags_list.copy()
     
     incorrect_ud_tags_padded_list.insert(0, tags[sep_index-1])
-    incorrect_ud_tags_padded_list.append(tags[sep_index+2+int(df['error_length'][i])])
+    incorrect_ud_tags_padded_list.append(tags[sep_index+1+int(df['error_length'][i])])
     incorrect_ud_tags_padded.append(' '.join(incorrect_ud_tags_padded_list))
 
-    incorrect_ud_tags_unigram_list.append(tags[sep_index+2+int(df['error_length'][i])])
+    incorrect_ud_tags_unigram_list.append(tags[sep_index+1+int(df['error_length'][i])])
     incorrect_ud_tags_unigram.append(' '.join(incorrect_ud_tags_unigram_list))
 
+    incorrect_ud_tags_bigram_list.append(tags[sep_index+1+int(df['error_length'][i])])
     incorrect_ud_tags_bigram_list.append(tags[sep_index+2+int(df['error_length'][i])])
-    incorrect_ud_tags_bigram_list.append(tags[sep_index+3+int(df['error_length'][i])])
     incorrect_ud_tags_bigram.append(' '.join(incorrect_ud_tags_bigram_list))
 
+    print(' '.join(tags))
+    print(df['incorrect_sentence'][0])
     print(incorrect_ud_tags)
     print(incorrect_ud_tags_padded)
     print(incorrect_ud_tags_unigram)

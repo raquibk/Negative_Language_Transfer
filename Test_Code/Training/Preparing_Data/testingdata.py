@@ -7,11 +7,7 @@ import spacy
 nlp = spacy.load("en_core_web_sm")
 df = pd.read_csv("../../../Testing_Set/main_chinese.csv")
 
-df['error_length'].replace('', np.nan, inplace=True)
-df.dropna(how = 'any', inplace= True)
-df.dropna()
-print("lengthhhhhhhhhhhh  " + str(len(df.index)))
-
+df['error_length'][1139] = 1.0
 error_type = []
 Negative_Transfer = []
 Reason = []
@@ -22,10 +18,10 @@ incorrect_ud_tags_bigram = []
 incorrect_sentence = []
 likely_reason = []
 count = 0
-print(len(df.index))
 
 for i in range(len(df.index)):
     try:
+        print(i)
         incorrect_ud_tags_unigram_list = []
         incorrect_ud_tags_bigram_list = []
         incorrect_ud_tags_padded_list = []
@@ -72,8 +68,6 @@ for i in range(len(df.index)):
         count+=1
         continue
 
-print("Count is: " + str(count))
-print("Length of dataframe is: " + str(len(df.index)))
 output = pd.DataFrame(
     {
         'Incorrect Sentence': incorrect_sentence,
@@ -86,5 +80,4 @@ output = pd.DataFrame(
         'Incorrect UD Bigram': incorrect_ud_tags_bigram
     }
 )
-print(len(output.index))
-#output.to_csv('../../../Testing_Set/processed_data.csv')
+output.to_csv('../../../Testing_Set/processed_data.csv')

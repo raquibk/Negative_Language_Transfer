@@ -4,7 +4,7 @@ model = kenlm.Model('../../Resources/n_gram_models/5_en.arpa')
 model_zhs = kenlm.Model('../../Resources/n_gram_models/5_zhs.arpa')
 
 nlp = spacy.load("en_core_web_sm")
-doc = nlp("The idea of international art festival was great")
+doc = nlp("I have a car blue")
 str = ""
 
 for token in doc:

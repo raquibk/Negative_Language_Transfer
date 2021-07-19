@@ -1,0 +1,12 @@
+---------------------
+| Confusion Matrix                             |
+| True Positive: 544| False Negative: 934 |
+| False Positive: 326| True Negative: 561 |
+---------------------
+Precision:
+0.6252873563218391
+Recall:
+0.3680649526387009
+F1:
+0.46337308347529804
+2365

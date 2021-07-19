@@ -1,0 +1,45 @@
+Formulae Used:
+
+precision = true_positive/(true_positive+false_positive)
+recall = true_positive/(true_positive+false_negative)
+f1 = 2*((precision*recall)/(precision+recall))
+
+Error + Unigram
+---------------------
+| Confusion Matrix                             |
+| True Positive: 571| False Negative: 906 |
+| False Positive: 344| True Negative: 543 |
+---------------------
+Precision:
+0.6240437158469946
+Recall:
+0.3865944482058226
+F1:
+0.4774247491638796
+
+Error + Bigram
+---------------------
+| Confusion Matrix                             |
+| True Positive: 494| False Negative: 983 |
+| False Positive: 297| True Negative: 590 |
+---------------------
+Precision:
+0.6245259165613148
+Recall:
+0.3344617467840217
+F1:
+0.435626102292769
+
+Error + Padded
+---------------------
+| Confusion Matrix                             |
+| True Positive: 544| False Negative: 934 |
+| False Positive: 326| True Negative: 561 |
+---------------------
+Precision:
+0.6252873563218391
+Recall:
+0.3680649526387009
+F1:
+0.46337308347529804
+
